@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
   before_action :set_list, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :verify_user, only: [:show, :edit, :update, :destroy]
 
   # GET /lists or /lists.json
   def index
@@ -50,7 +52,9 @@ class ListsController < ApplicationController
 
   # DELETE /lists/1 or /lists/1.json
   def destroy
-    @list.destroy
+    if current_user == @list.user
+        @list.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to lists_url, notice: "List was successfully destroyed." }
@@ -67,5 +71,9 @@ class ListsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def list_params
       params.require(:list).permit(:title, :description, :completed)
+    end
+
+    def verify_user
+       redirect_to lists_path, notice: "You cannot edit that list" if @list.user != current_user
     end
 end

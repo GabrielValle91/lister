@@ -65,7 +65,11 @@ class ListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_list
-      @list = List.find(params[:id])
+        @list = List.find_by_id(params[:id])
+        if @list.nil?
+            redirect_to lists_path
+        end
+        @list
     end
 
     # Only allow a list of trusted parameters through.

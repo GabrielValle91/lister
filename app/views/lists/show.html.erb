@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @list %>
-
-<div>
-  <%= link_to "Edit this list", edit_list_path(@list) %> |
-  <%= link_to "Back to lists", lists_path %>
-
-  <%= button_to "Destroy this list", @list, method: :delete %>
+<div class="jumbotron">
+    <h1 class="display-4"><%= @list.title %></h1>
+    <p class="lead">
+        <%= @list.description %>
+    </p>
+    <p class="lead">
+        <strong>Completed: </strong><%= @list.completed %>
+    </p>
+    <hr class="my-4">
+    <p>List items will go here</p>
+    <%= link_to "Edit", edit_list_path(@list), class:"btn btn-secondary" %>
+    <%= link_to "Back", lists_path, class:"btn btn-dark" %>
+    <%= button_to "Destroy", @list, method: :delete, class:"btn btn-danger" %>
 </div>

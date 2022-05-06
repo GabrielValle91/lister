@@ -11,22 +11,20 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <%= form.text_field :title, class:"form-control", placeholder:"Title" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+  <div class="form-group">
+    <%= form.text_field :description, class:"form-control", placeholder:"Description" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :completed, style: "display: block" %>
-    <%= form.check_box :completed %>
+    <%= form.check_box :completed, class:"form-control-input" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-success" %>
   </div>
 <% end %>

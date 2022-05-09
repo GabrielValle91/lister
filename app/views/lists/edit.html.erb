@@ -1,9 +1,11 @@
 <h1>Editing list</h1>
 
 <%= render "form", list: @list %>
-
+<br/>
+<%= render "list_items/form", list_item: @list.list_items.new %>
 <br>
 
+<h4>List options</h4>
 <div>
   <%= link_to "Show", @list, class:"btn btn-secondary" %>
   <%= link_to  "Delete", @list, data:{"turbo-method": :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger" %>

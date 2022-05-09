@@ -7,7 +7,21 @@
         <strong>Completed: </strong><%= @list.completed %>
     </p>
     <hr class="my-4">
-    <p>List items will go here</p>
+    <table class="table table-sm table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>List Item</th>
+                <th>Item Type</th>
+                <th>Qty</th>
+                <th>Done?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @list.list_items.each do |list_item| %>
+                <%= render list_item %>
+            <% end %>
+        </tbody>
+    </table>
     <%= link_to "Edit", edit_list_path(@list), class:"btn btn-secondary" %>
     <%= link_to  "Delete", @list, data:{"turbo-method": :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger" %>
     <%= link_to "Back", lists_path, class:"btn btn-dark" %>

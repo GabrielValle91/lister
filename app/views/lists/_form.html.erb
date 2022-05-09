@@ -24,6 +24,33 @@
     <%= form.label :completed %>
   </div>
 
+  <% if list.list_items.size > 0 %>
+    
+    <table class="table table-sm table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>List Item</th>
+                <th>Item Type</th>
+                <th>Qty</th>
+                <th>Done?</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= form.fields_for :list_items do |list_item_form| %>
+                <tr>
+                    <td><%= list_item_form.text_field :name %></td>
+                    <td><%= list_item_form.select(:item_type, ["Action", "Qty"]) %></td>
+                    <td><%= list_item_form.text_field :qty %></td>
+                    <td><%= list_item_form.check_box :completed %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+  <% end %>
+
   <div>
     <%= form.submit class:"btn btn-success" %>
   </div>

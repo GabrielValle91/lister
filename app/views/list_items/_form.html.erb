@@ -1,0 +1,36 @@
+<%= form_with(model: list_item) do |form| %>
+    <h4>Add a new list item</h4>
+    <table class="table table-sm table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>List Item</th>
+                <th>Item Type</th>
+                <th>Qty</th>
+                <th>Done?</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr id="<%= dom_id list_item %>">
+                    <% if list_item.errors.any? %>
+                        <div style="color: red">
+                        <h2><%= pluralize(list_item.errors.count, "error") %> prohibited this list_item from being saved:</h2>
+
+                        <ul>
+                            <% list_item.errors.each do |error| %>
+                            <li><%= error.full_message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <% end %>
+                    <td><%= form.text_field :name %></td>
+                    <td><%= form.select(:item_type, ["Action", "Qty"]) %></td>
+                    <td><%= form.text_field :qty %></td>
+                    <td><%= form.check_box :completed %></td>
+                    <td><%= form.hidden_field :list_id %></td>
+                    <td><%= form.submit %></td>
+                </tr>
+        </tbody>
+    </table>
+<% end %>

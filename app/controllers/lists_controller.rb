@@ -39,6 +39,7 @@ class ListsController < ApplicationController
 
   # PATCH/PUT /lists/1 or /lists/1.json
   def update
+    puts list_params
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to list_url(@list), notice: "List was successfully updated." }
@@ -74,7 +75,7 @@ class ListsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def list_params
-      params.require(:list).permit(:title, :description, :completed)
+      params.require(:list).permit(:title, :description, :completed, list_items_attributes: [:id, :name, :qty, :item_type, :completed])
     end
 
     def verify_user

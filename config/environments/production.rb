@@ -92,5 +92,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #need to update to hosting url before app goes live
-  config.action_mailer.default_url_options = { host: 'https://radiant-thicket-85951.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'smtp.sendgrid.net', port: 587 }
 end

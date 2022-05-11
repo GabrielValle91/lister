@@ -15,7 +15,7 @@ Rails.application.initialize!
 #     :default_from_email => ENV['FROM_EMAIL_ADDRESS']
 # }
 ActionMailer::Base.smtp_settings = {
-    address: ENV['MAILGUN-SMTP-SERVER'],
+    address: ENV['MAILGUN_SMTP_SERVER'],
     port: ENV["MAILGUN_SMTP_PORT"],
     domain: "radiant-thicket-85951.herokuapp.com/",
     user_name: ENV["MAILGUN_SMTP_LOGIN"],
